@@ -1,13 +1,14 @@
 [
-    2,
-
+    {
+        "playingNum": 0,
+        "chaal": 0
+    },
     {
         "name": "Prateek Sharma",
         "bets": [1,1,2,2],
         "packed": false,
         "totalBet": 6
     },
-    
     {
         "name": "Akshat Chhabra",
         "bets": [1,2,2,2],
