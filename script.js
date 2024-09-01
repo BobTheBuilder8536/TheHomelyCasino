@@ -12,7 +12,14 @@ const app = initializeApp(firebaseConfig);
 
 import {getDatabase, ref,onValue, child, get, set, update, remove} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
-var pName = "Akshat";
+
+function chaalSound() {
+    var audio = new Audio("chaal.mp3");
+    audio.play();
+  }
+
+
+var pName = "Prateek";
 const db = getDatabase();
 var playerID = 0;
 var chaalAmount = 0;
@@ -28,6 +35,7 @@ function activate(data){
   playerActive = true;
   packActive = true;
   playerList = data["RoundData"].names;
+
   // console.log(playerActive);
 }
 
@@ -36,18 +44,27 @@ function uiUpdate(){
 }
 
 function fbUpdate(amount){
+  console.log("Updated");
   update(ref(db,'Round/' + pName),{
     bets: betInfo,
     totalBet: betInfo.reduce((a, b) => a + b, 0)
   });
-  update(ref(db,'Round/RoundData'),{
-    chaal: amount,
-    playingNum: playerID+1
-  });
+  if (playerID == ((playerList.length)-1)){
+    update(ref(db,'Round/RoundData'),{
+      chaal: amount,
+      playingNum: 0
+    });
+  } else {
+    update(ref(db,'Round/RoundData'),{
+      chaal: amount,
+      playingNum: playerID+1
+    });
+  }
 }
 
 function deactivate(){
   playerActive = false;
+  packActive = false;
 }
 
 function playChaal(){
@@ -105,6 +122,7 @@ onValue(child(ref(db),'Round/'),(snapshot) => {
 
 document.getElementById("chaalBut").addEventListener("click", () => {
   if (playerActive){
+    chaalSound();
     playChaal();
   }
 });
