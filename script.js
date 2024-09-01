@@ -19,7 +19,7 @@ function chaalSound() {
   }
 
 
-var pName = "Prateek";
+var pName = "Akshat";
 const db = getDatabase();
 var playerID = 0;
 var chaalAmount = 0;
