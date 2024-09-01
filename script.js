@@ -19,7 +19,7 @@ function chaalSound() {
   }
 
 
-var pName = "Akshat";
+var pName = "Prateek";
 const db = getDatabase();
 var playerID = 0;
 var chaalAmount = 0;
@@ -126,13 +126,15 @@ function playPack(){
 
 onValue(child(ref(db),'Round/'),(snapshot) => {
   var dbSnap = snapshot.val();
-  if (dbSnap[pName].showing){
-    packActive = true;
-  }
+  
   if ((dbSnap[pName].playerNum == dbSnap["RoundData"].playingNum) && (dbSnap[pName].packed == false) && (dbSnap[pName].showing == false)){
     activate(dbSnap);
     // console.log(playerActive);
     console.log("You are playing");
+  } else if (dbSnap[pName].showing){
+    playerActive = false;
+    packActive = true;
+
   } else {
     deactivate();
     console.log("Someone Else is playing");
