@@ -5,6 +5,8 @@
      display: flex;
      justify-content: center;
      align-items: center;
+     width: 100vw;
+     height: 9vh;
 
 }
 
@@ -12,11 +14,13 @@
 {
      padding: 0;
      margin: 0;
-     height: 6vh;
+     height: 8vh;
      text-align: center;
-     font-size: 3.0vh;
-     background-color: beige;
-     border-radius: 320px;
+     font-size: 4.0vh;
+     color: beige;
+     background-color: #062222;
+     border-radius: 20px;
+     border: 3px solid black;
 
 }
 
@@ -29,7 +33,6 @@ body
 #header
 {
      height: 10vh;
-     background-color: #062222;
      padding: 0;
      margin: 0;
      font-size: 5vh;
@@ -38,7 +41,12 @@ body
      display: flex;
      justify-content: center;
      align-items: center;
+}
 
+#displayname
+{
+     color: beige;
+     font-size: 6vh;
 }
 
 #currentRound
@@ -47,8 +55,8 @@ body
      height: 8vh;
      width: 40%;
      border-radius: 50px;
-     border-right: 1vh solid black;
-     border-bottom: 1vh solid black;
+     border-right: 0.5vh solid rgb(100, 100, 90);
+     border-bottom: 0.5vh solid rgb(100, 100, 90);
      margin: auto;
      margin-top: 3vh;
 
@@ -140,7 +148,7 @@ body
      justify-content: center;
      align-items: center;
      flex-direction: row;
-     margin-top: 3vh;
+     margin-top: 2vh;
 }
 
 .players2

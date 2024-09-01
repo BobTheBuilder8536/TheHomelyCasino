@@ -12,19 +12,21 @@ const app = initializeApp(firebaseConfig);
 
 import {getDatabase, ref,onValue, child, get, set, update, remove} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
-var pName = "Prateek";
+var pName = "Akshat";
 const db = getDatabase();
 var playerID = 0;
 var chaalAmount = 0;
 var playerActive = false;
 var playerList = [];
 var betInfo = [];
+var packActive = false;
 
 function activate(data){
   betInfo = data[pName].bets;
   chaalAmount = data["RoundData"].chaal;
   playerID = data[pName].playerNum;
   playerActive = true;
+  packActive = true;
   playerList = data["RoundData"].names;
   // console.log(playerActive);
 }
@@ -66,12 +68,16 @@ function playShow(){
   betInfo.push(chaalAmount);
   
   // Get previous unpacked player
+  update(ref(db,'Round/' + playerList[playerID]),{
+    showing: true
+  });
+
   update(ref(db,'Round/' + playerList[playerID+1]),{
     showing: true
   });
-  
+
   console.log("Show");
-  fbUpdate();
+  fbUpdate(chaalAmount);
   
 }
 
@@ -83,7 +89,10 @@ function playPack(){
 
 onValue(child(ref(db),'Round/'),(snapshot) => {
   var dbSnap = snapshot.val();
-  if ((dbSnap[pName].playerNum == dbSnap["RoundData"].playingNum) && (dbSnap[pName].packed == false)){
+  if (dbSnap[pName].showing){
+    packActive = true;
+  }
+  if ((dbSnap[pName].playerNum == dbSnap["RoundData"].playingNum) && (dbSnap[pName].packed == false) && (dbSnap[pName].showing == false)){
     activate(dbSnap);
     // console.log(playerActive);
     console.log("You are playing");
@@ -113,7 +122,7 @@ document.getElementById("showBut").addEventListener("click", () => {
 });
 
 document.getElementById("packBut").addEventListener("click", () => {
-  if (playerActive){
+  if (packActive){
     playPack();
   }
 });
