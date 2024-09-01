@@ -15,10 +15,48 @@ import {getDatabase, ref,onValue, child, get, set, update, remove} from "https:/
 var pName = "Prateek";
 var matchData;
 const db = child(ref(getDatabase()),'Round/');
+var chaalAmount = 0;
+var playerActive = false;
+var betInfo = [];
+
+function activate(data){
+  betInfo = data[pName].bets;
+  chaalAmount = data["RoundData"].chaal;
+  playerActive = true;
+}
+
+
+function deactivate(){
+    playerActive = false;
+}
+
+function playChaal(){
+        console.log("Chaal");
+}
+
+function playDouble(){
+    console.log("Double");
+}
+
+function playShow(){
+    console.log("Show");
+}
+
+function playPack(){
+    console.log("Pack");
+}
+
 
 
 onValue(db,(snapshot) => {
-  console.log(snapshot.val()["RoundData"]);
+  var dbSnap = snapshot.val();
+  if ((dbSnap[pName].playerNum == dbSnap["RoundData"].playingNum) && (dbSnap[pName].packed == false)){
+    activate(dbSnap);
+    console.log("You are playing");
+  } else {
+    deactivate();
+    console.log("Someone Else is playing");
+  }
 })
 
 // get(child(db, `Round/`)).then((snapshot) => {
@@ -31,33 +69,6 @@ onValue(db,(snapshot) => {
 // });
 
 
-// function active(){
-//     chaalAmount = data[0].chaal;
-//     betInfo = data[playerNum].bets;
-//     playerActive = true;
-// }
-
-// function playChaal(){
-//         console.log("Chaal");
-//     }
-
-// function playDouble(){Chutiya
-//     console.log("Double");
-// }
-
-// function playShow(){
-//     console.log("Show");
-// }
-
-// function playPack(){
-//     console.log("Pack");
-// }
-
-// function deactive(){
-//     //write to json
-//     //refresh
-//     //
-// }
     
 // while (true) {
         

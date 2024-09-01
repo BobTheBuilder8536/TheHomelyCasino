@@ -1,6 +1,7 @@
 body
 {
      background-color: #220606;
+     user-select: none;
 }
 
 #header
@@ -45,7 +46,7 @@ body
      display: flex;
      justify-content: center;
      align-items: center;
-     user-select: none;
+     
 }
 
 .move1 div
@@ -81,25 +82,25 @@ body
      font-weight: 500;
 }
 
-#chaal:active
+#chaalBut:active
 {
      opacity: 75%;
      scale: 0.93;
 }
 
-#double:active
+#doubleBut:active
 {
      opacity: 75%;
      scale: 0.93;
 }
 
-#show:active
+#showBut:active
 {
      opacity: 75%;
      scale: 0.93;
 }
 
-#pack:active
+#packBut:active
 {
      opacity: 75%;
      scale: 0.93;
