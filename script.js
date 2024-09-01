@@ -44,7 +44,6 @@ function uiUpdate(){
 }
 
 function fbUpdate(amount){
-  console.log("Updated");
   update(ref(db,'Round/' + pName),{
     bets: betInfo,
     totalBet: betInfo.reduce((a, b) => a + b, 0)
@@ -85,7 +84,7 @@ function playShow(){
   betInfo.push(chaalAmount);
   
   // Get previous unpacked player
-  update(ref(db,'Round/' + playerList[playerID]),{
+  update(ref(db,'Round/' + pName),{
     showing: true
   });
 
@@ -99,6 +98,15 @@ function playShow(){
 }
 
 function playPack(){
+  update(ref(db,'Round/' + playerList[playerID+1]),{
+    showing: false
+  });
+
+  update(ref(db,'Round/' + pName),{
+    packed: true,
+    showing: false
+  });
+  
   console.log("Pack");
 }
 
