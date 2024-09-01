@@ -13,7 +13,6 @@ const app = initializeApp(firebaseConfig);
 import {getDatabase, ref,onValue, child, get, set, update, remove} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
 var pName = "Prateek";
-var matchData;
 const db = child(ref(getDatabase()),'Round/');
 var chaalAmount = 0;
 var playerActive = false;
@@ -23,27 +22,28 @@ function activate(data){
   betInfo = data[pName].bets;
   chaalAmount = data["RoundData"].chaal;
   playerActive = true;
+  // console.log(playerActive);
 }
 
 
 function deactivate(){
-    playerActive = false;
+  playerActive = false;
 }
 
 function playChaal(){
-        console.log("Chaal");
+  console.log("Chaal");
 }
 
 function playDouble(){
-    console.log("Double");
+  console.log("Double");
 }
 
 function playShow(){
-    console.log("Show");
+  console.log("Show");
 }
 
 function playPack(){
-    console.log("Pack");
+  console.log("Pack");
 }
 
 
@@ -52,6 +52,7 @@ onValue(db,(snapshot) => {
   var dbSnap = snapshot.val();
   if ((dbSnap[pName].playerNum == dbSnap["RoundData"].playingNum) && (dbSnap[pName].packed == false)){
     activate(dbSnap);
+    // console.log(playerActive);
     console.log("You are playing");
   } else {
     deactivate();
@@ -59,35 +60,27 @@ onValue(db,(snapshot) => {
   }
 })
 
-// get(child(db, `Round/`)).then((snapshot) => {
-//     if (snapshot.exists()) {
-//       matchData = snapshot.val()["RoundData"];
-//       console.log(matchData);
-//     } else {
-//       console.log("No data available");
-//     }
-// });
 
+document.getElementById("chaalBut").addEventListener("click", () => {
+  if (playerActive){
+    playChaal();
+  }
+});
 
-    
-// while (true) {
-        
-//     data = await getData('./round.json');
-//     console.log(data[0].playingNum);
-//     if (data[0].playingNum == playerNum){
-//         active();
-//         break;
-//     }
-// }
+document.getElementById("doubleBut").addEventListener("click", () => {
+  if (playerActive){
+    playDouble();
+  }
+});
 
-// console.log(chaalAmount);
-// console.log(betInfo);
+document.getElementById("showBut").addEventListener("click", () => {
+  if (playerActive){
+    playShow();
+  }
+});
 
-// document.getElementById("chaal").addEventListener("click",playChaal);
-// document.getElementById("double").addEventListener("click",playDouble);
-// document.getElementById("show").addEventListener("click",playShow);
-// document.getElementById("pack").addEventListener("click",playPack);
-
-// // while (playerActive == true){
-// //     // document.getElementById("chaal").addEventListener("click",playChaal());
-// // }
+document.getElementById("packBut").addEventListener("click", () => {
+  if (playerActive){
+    playPack();
+  }
+});
