@@ -19,7 +19,7 @@ function chaalSound() {
   }
 
 
-var pName = "Akshat";
+var pName = "Prateek";
 const db = getDatabase();
 var playerID = 0;
 var chaalAmount = 0;
@@ -110,14 +110,21 @@ function playShow(){
 }
 
 function playPack(){
-  update(ref(db,'Round/' + playerList[playerID+1]),{
-    showing: false
-  });
+  if (playerID == ((playerList.length)-1)){
+    update(ref(db,'Round/' + playerList[0]),{
+      showing: false
+    });
+  } else {
+    update(ref(db,'Round/' + playerList[playerID+1]),{
+      showing: false
+    });
+  }
 
   update(ref(db,'Round/' + pName),{
     packed: true,
     showing: false
   });
+  
   fbUpdate();
   console.log("Pack");
 }
