@@ -13,18 +13,36 @@ const app = initializeApp(firebaseConfig);
 import {getDatabase, ref,onValue, child, get, set, update, remove} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
 var pName = "Prateek";
-const db = child(ref(getDatabase()),'Round/');
+const db = getDatabase();
+var playerID = 0;
 var chaalAmount = 0;
 var playerActive = false;
+var playerList = [];
 var betInfo = [];
 
 function activate(data){
   betInfo = data[pName].bets;
   chaalAmount = data["RoundData"].chaal;
+  playerID = data[pName].playerNum;
   playerActive = true;
+  playerList = data["RoundData"].names;
   // console.log(playerActive);
 }
 
+function uiUpdate(){
+
+}
+
+function fbUpdate(amount){
+  update(ref(db,'Round/' + pName),{
+    bets: betInfo,
+    totalBet: betInfo.reduce((a, b) => a + b, 0)
+  });
+  update(ref(db,'Round/RoundData'),{
+    chaal: amount,
+    playingNum: playerID+1
+  });
+}
 
 function deactivate(){
   playerActive = false;
@@ -32,14 +50,29 @@ function deactivate(){
 
 function playChaal(){
   console.log("Chaal");
+  betInfo.push(chaalAmount);
+  fbUpdate(chaalAmount);
+  // deactivate();
 }
 
 function playDouble(){
-  console.log("Double");
+  console.log("Double");                                                                                                                                                                                                                                                                                                                                                                                          
+  chaalAmount *=2;
+  betInfo.push(chaalAmount);
+  fbUpdate(chaalAmount);
 }
 
 function playShow(){
+  betInfo.push(chaalAmount);
+  
+  // Get previous unpacked player
+  update(ref(db,'Round/' + playerList[playerID+1]),{
+    showing: true
+  });
+  
   console.log("Show");
+  fbUpdate();
+  
 }
 
 function playPack(){
@@ -48,7 +81,7 @@ function playPack(){
 
 
 
-onValue(db,(snapshot) => {
+onValue(child(ref(db),'Round/'),(snapshot) => {
   var dbSnap = snapshot.val();
   if ((dbSnap[pName].playerNum == dbSnap["RoundData"].playingNum) && (dbSnap[pName].packed == false)){
     activate(dbSnap);
@@ -58,7 +91,7 @@ onValue(db,(snapshot) => {
     deactivate();
     console.log("Someone Else is playing");
   }
-})
+});
 
 
 document.getElementById("chaalBut").addEventListener("click", () => {

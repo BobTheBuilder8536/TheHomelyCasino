@@ -1,3 +1,25 @@
+#logindiv
+{
+     /* height: 100vh; */
+     /* width: auto; */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+}
+
+#loginform input
+{
+     padding: 0;
+     margin: 0;
+     height: 6vh;
+     text-align: center;
+     font-size: 3.0vh;
+     background-color: beige;
+     border-radius: 320px;
+
+}
+
 body
 {
      background-color: #220606;
@@ -16,6 +38,7 @@ body
      display: flex;
      justify-content: center;
      align-items: center;
+
 }
 
 #currentRound
@@ -23,8 +46,9 @@ body
      background-color: beige;
      height: 8vh;
      width: 40%;
-     border: 5px solid #062222;
      border-radius: 50px;
+     border-right: 1vh solid black;
+     border-bottom: 1vh solid black;
      margin: auto;
      margin-top: 3vh;
 
@@ -59,6 +83,8 @@ body
      background-color: #062222;
      border-radius: 25%;;
      margin: 2vh;
+     border-bottom: 5px solid black;
+     border-right: 5px solid black;
 }
 
 .move2 div
@@ -72,6 +98,8 @@ body
      margin: 1vh;
      border-radius: 25%;;
      margin: 2vh;
+     border-bottom: 5px solid black;
+     border-right: 5px solid black;
 
 }
 
@@ -143,6 +171,7 @@ body
      width: 6vh;
      border-radius: 50%;
      background-color: beige;
+     border-right: 3px solid black;
 }
 
 #currentBet
