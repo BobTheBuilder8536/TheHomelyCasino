@@ -12,15 +12,24 @@ const app = initializeApp(firebaseConfig);
 
 import {getDatabase, ref, child, get, set, update, remove} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
-const db = ref(getDatabase());
+var pName = "Prateek";
+var matchData;
+const db = child(ref(getDatabase()),'Round/');
 
-get(child(db, `Round/`)).then((snapshot) => {
+
+db.on('child_changed',(snapshot) => {
+  console.log(snapshot.val());
+})
+get(db).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val());
+      matchData = snapshot.val()["RoundData"];
+      console.log(matchData);
     } else {
       console.log("No data available");
     }
-  });
+});
+
+
 // function active(){
 //     chaalAmount = data[0].chaal;
 //     betInfo = data[playerNum].bets;
