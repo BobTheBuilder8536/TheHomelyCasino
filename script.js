@@ -19,12 +19,14 @@ function chaalSound() {
   }
 
 
+
 var pName = "Akshat";
 const db = getDatabase();
 var playerID = 0;
 var chaalAmount = 0;
 var playerActive = false;
-var playerList = [];
+var nextPlayer = [];
+var previousPlayer = [];
 var betInfo = [];
 var packActive = false;
 
@@ -34,8 +36,29 @@ function activate(data){
   playerID = data[pName].playerNum;
   playerActive = true;
   packActive = true;
-  playerList = data["RoundData"].names;
+  
+  var nameList = data["RoundData"].names;
+  
+  while (true){
+    if ((data[nameList[(playerID == 0) ? playerID = (nameList.length-1) : --playerID]].packed) == false){
+      previousPlayer = [playerID,nameList[playerID]];
+      break;
+    }
+  }
 
+  playerID = data[pName].playerNum;
+  
+  while (true){
+    if ((data[nameList[(playerID == (nameList.length-1)) ? playerID = 0 : ++playerID]].packed) == false){
+      nextPlayer = [playerID,nameList[playerID]];
+      break;
+    }
+  }
+  
+  playerID = data[pName].playerNum;
+
+  // console.log("Previous : " + previousPlayer);
+  // console.log("Next : " + nextPlayer);
   // console.log(playerActive);
 }
 
@@ -48,17 +71,11 @@ function fbUpdate(amount){
     bets: betInfo,
     totalBet: betInfo.reduce((a, b) => a + b, 0)
   });
-  if (playerID == ((playerList.length)-1)){
-    update(ref(db,'Round/RoundData'),{
-      chaal: amount,
-      playingNum: 0
-    });
-  } else {
-    update(ref(db,'Round/RoundData'),{
-      chaal: amount,
-      playingNum: playerID+1
-    });
-  }
+
+  update(ref(db,'Round/RoundData'),{
+    chaal: amount,
+    playingNum: nextPlayer[0]
+  });
 }
 
 function deactivate(){
@@ -88,21 +105,9 @@ function playShow(){
     showing: true
   });
 
-  if (playerID == ((playerList.length)-1)){
-    update(ref(db,'Round/' + pName),{
-      showing: true
-    });
-    update(ref(db,'Round/' + playerList[0]),{
-      showing: true
-    });
-  } else {
-    update(ref(db,'Round/' + pName),{
-      showing: true
-    });
-    update(ref(db,'Round/' + playerList[playerID+1]),{
-      showing: true
-    });
-  }
+  update(ref(db,'Round/' + previousPlayer[1]),{
+    showing: true
+  });
 
   console.log("Show");
   fbUpdate(chaalAmount);
@@ -110,22 +115,19 @@ function playShow(){
 }
 
 function playPack(){
-  if (playerID == ((playerList.length)-1)){
-    update(ref(db,'Round/' + playerList[0]),{
-      showing: false
-    });
-  } else {
-    update(ref(db,'Round/' + playerList[playerID+1]),{
-      showing: false
-    });
-  }
+  update(ref(db,'Round/' + previousPlayer[1]),{
+    showing: false
+  });
 
   update(ref(db,'Round/' + pName),{
     packed: true,
     showing: false
   });
 
-  fbUpdate();
+  update(ref(db,'Round/RoundData/'),{
+    playingNum: playerID + 1
+  })
+  
   console.log("Pack");
 }
 
