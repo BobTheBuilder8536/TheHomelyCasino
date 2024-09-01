@@ -1,4 +1,11 @@
-#logindiv
+body
+{
+     background-color: #220606;
+     user-select: none;
+     font-family: 'Times New Roman', Times, serif;
+}
+
+#loginDiv
 {
      /* height: 100vh; */
      /* width: auto; */
@@ -10,25 +17,21 @@
 
 }
 
-#loginform input
+#loginForm input
 {
      padding: 0;
      margin: 0;
      height: 8vh;
+     width: 90vw;
      text-align: center;
      font-size: 4.0vh;
      color: beige;
      background-color: #062222;
      border-radius: 20px;
-     border: 3px solid black;
-
+     border: 5px solid black;
+     font-family: 'Times New Roman', Times, serif;
 }
 
-body
-{
-     background-color: #220606;
-     user-select: none;
-}
 
 #header
 {
@@ -38,15 +41,37 @@ body
      font-size: 5vh;
      color: beige;
      font-weight: 1200;
+
      display: flex;
      justify-content: center;
      align-items: center;
 }
 
-#displayname
+/* #displayName p
 {
+     margin: 0;
+     padding: 1.5vh;
+}
+ */
+
+#displayName
+{
+     margin: 0;
+     height: 8vh;
+     width: 90vw;
+     text-align: center;
+     font-size: 4.0vh;
      color: beige;
-     font-size: 6vh;
+     background-color: #062222;
+     border-radius: 20px;
+     outline: none;
+     border-color: #FFDF00;
+     box-shadow: 0 0 5px #FFDF00;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
 }
 
 #currentRound
@@ -91,8 +116,8 @@ body
      background-color: #062222;
      border-radius: 25%;;
      margin: 2vh;
-     border-bottom: 5px solid black;
-     border-right: 5px solid black;
+     border-bottom: 8px solid black;
+     border-right: 8px solid black;
 }
 
 .move2 div
@@ -106,8 +131,8 @@ body
      margin: 1vh;
      border-radius: 25%;;
      margin: 2vh;
-     border-bottom: 5px solid black;
-     border-right: 5px solid black;
+     border-bottom: 8px solid black;
+     border-right: 8px solid black;
 
 }
 
