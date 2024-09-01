@@ -19,7 +19,7 @@ function chaalSound() {
   }
 
 
-var pName = "Akshat";
+var pName = "Prateek";
 const db = getDatabase();
 var playerID = 0;
 var chaalAmount = 0;
@@ -124,7 +124,7 @@ function playPack(){
     packed: true,
     showing: false
   });
-  
+
   fbUpdate();
   console.log("Pack");
 }
@@ -141,6 +141,7 @@ onValue(child(ref(db),'Round/'),(snapshot) => {
   } else if (dbSnap[pName].showing){
     playerActive = false;
     packActive = true;
+    console.log("You are showing");
 
   } else {
     deactivate();
