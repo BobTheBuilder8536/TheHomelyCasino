@@ -3,6 +3,8 @@ body
      background-color: #220606;
      user-select: none;
      font-family: 'Times New Roman', Times, serif;
+     height: 100%;
+     overflow: hidden;
 }
 
 #loginDiv
@@ -28,7 +30,6 @@ body
      border: 5px solid black;
      font-family: 'Times New Roman', Times, serif;
 }
-
 
 #header
 {
@@ -61,16 +62,15 @@ body
      display: flex;
      justify-content: center;
      align-items: center;
-     
 }
 
 #currentRound
 {
      background-color: beige;
-     height: 8vh;
-     width: 40%;
+     height: 7vh;
+     width: 60%;
      border-radius: 50px;
-     border-right: 0.5vh solid rgb(100, 100, 90);
+     border-right:  0.5vh solid rgb(100, 100, 90);
      border-bottom: 0.5vh solid rgb(100, 100, 90);
      margin: auto;
      margin-top: 3vh;
@@ -78,25 +78,130 @@ body
      display: flex;
      justify-content: center;
      align-items: center;
-     color: #062222;
-     font-size: 6vh;
-     font-weight: 500;
 }
 
-.move
+#cumBet
+{
+     margin-left: 40%;
+     color: #062222;
+     font-size:   6vh;
+     font-weight: 600;
+}
+
+#myBet
+{
+     color: gray;
+     font-size: 4vh;
+     padding-left: 30%;
+}
+
+#move
 {
      margin-top: 1vh;
 }
 
-.move div
+#move div
 {
      display: flex;
      justify-content: center;
      align-items: center;
-     
 }
 
-.move1 div
+#adminMove { 
+     display: none;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     margin-top: 10vh;
+}
+
+#adminMove div
+{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 15vh;
+     width: 15vh;
+     background-color: #062222;
+     border-radius: 25%;;
+     margin: 2vh;
+     border-bottom: 8px solid black;
+     border-right: 8px solid black;
+}
+
+#adminMove div:active
+{
+     opacity: 75%;
+     scale: 0.93;
+}
+
+#chaalBut
+{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 15vh;
+     width: 15vh;
+     background-color: #062222;
+     border-radius: 25%;;
+     margin: 2vh;
+     border-bottom: 8px solid black;
+     border-right: 8px solid black;
+}
+
+#chaalBut2
+{
+     height: 8vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+
+#chaalBut2 pre
+{
+     margin: 0;
+     margin-top: 4vh;
+     margin-bottom: 0.5vh;
+     padding: 0;
+}
+
+#chaalBut2 p
+{
+     margin: 0;
+     padding: 0;
+     font-size: 1vh;
+     color: gray;
+     opacity: 50%;
+}
+
+#doubleBut2
+{
+     height: 8vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+
+#doubleBut2 p
+{
+     margin: 0;
+     padding: 0;
+     font-size: 1vh;
+     color: gray;
+     opacity: 50%;
+}
+
+#doubleBut2 pre
+{
+     margin: 0;
+     margin-top: 4vh;
+     margin-bottom: 0.5vh;
+     padding: 0;
+}
+
+#doubleBut
 {
      display: flex;
      justify-content: center;
@@ -123,14 +228,28 @@ body
      margin: 2vh;
      border-bottom: 8px solid black;
      border-right: 8px solid black;
-     
 }
 
-.move p
+#adminMove p
 {
      color: beige;
      font-size: 3.5vh;
      font-weight: 500;
+}
+
+#move p
+{
+     color: beige;
+     font-size: 3.5vh;
+     font-weight: 500;
+}
+
+#move pre
+{
+     color: beige;
+     font-size: 3.5vh;
+     font-weight: 500;
+     font-family: 'Times New Roman', Times, serif;
 }
 
 #chaalBut:active
@@ -158,7 +277,7 @@ body
 }
 
 
-.players1
+#players1
 {
      display: flex;
      justify-content: center;
@@ -167,7 +286,7 @@ body
      margin-top: 5vh;
 }
 
-.players2
+#players2
 {
      display: flex;
      justify-content: center;
@@ -229,7 +348,6 @@ body
      color: wheat;
      font-size: 12vw;
      font-weight: 600;
-     
 }
 
 #mask p
@@ -237,5 +355,4 @@ body
      padding: 5px;
      padding-left: 10px;
      padding-right: 10px;
-     /* border: 5px solid wheat; */
 }
