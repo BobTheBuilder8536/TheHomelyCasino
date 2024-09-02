@@ -7,14 +7,11 @@ body
 
 #loginDiv
 {
-     /* height: 100vh; */
-     /* width: auto; */
      display: flex;
      justify-content: center;
      align-items: center;
      width: 100vw;
      height: 9vh;
-
 }
 
 #loginForm input
@@ -47,13 +44,6 @@ body
      align-items: center;
 }
 
-/* #displayName p
-{
-     margin: 0;
-     padding: 1.5vh;
-}
- */
-
 #displayName
 {
      margin: 0;
@@ -67,11 +57,11 @@ body
      outline: none;
      border-color: #FFDF00;
      box-shadow: 0 0 5px #FFDF00;
-
+     
      display: flex;
      justify-content: center;
      align-items: center;
-
+     
 }
 
 #currentRound
@@ -84,7 +74,7 @@ body
      border-bottom: 0.5vh solid rgb(100, 100, 90);
      margin: auto;
      margin-top: 3vh;
-
+     
      display: flex;
      justify-content: center;
      align-items: center;
@@ -133,7 +123,7 @@ body
      margin: 2vh;
      border-bottom: 8px solid black;
      border-right: 8px solid black;
-
+     
 }
 
 .move p
@@ -167,13 +157,14 @@ body
      scale: 0.93;
 }
 
+
 .players1
 {
      display: flex;
      justify-content: center;
      align-items: center;
      flex-direction: row;
-     margin-top: 2vh;
+     margin-top: 5vh;
 }
 
 .players2
@@ -195,7 +186,6 @@ body
      margin-top: 2vh;
      margin-bottom: 1vh;
      flex-wrap: wrap;
-
 }
 
 #face
@@ -222,3 +212,30 @@ body
      align-items: center;
 }
 
+#mask
+{
+     height: 30vh;
+     width: 100vw;
+     position: absolute;
+     top: 67vh;
+     background-color: rgba(0, 0, 0, 0.704);
+     backdrop-filter: blur(7px);
+     box-shadow: 0 0 60px black;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     color: wheat;
+     font-size: 12vw;
+     font-weight: 600;
+     
+}
+
+#mask p
+{
+     padding: 5px;
+     padding-left: 10px;
+     padding-right: 10px;
+     /* border: 5px solid wheat; */
+}

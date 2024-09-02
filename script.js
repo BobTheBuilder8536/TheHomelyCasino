@@ -12,6 +12,37 @@ const app = initializeApp(firebaseConfig);
 
 import {getDatabase, ref,onValue, child, get, set, update, remove} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
+const db = getDatabase();
+
+// function addUser(username){
+//   get(ref(db,'Round/')).then((snapshot) => {
+//     console.log(snapshot.val());
+//     console.log(username);
+//     if(username in snapshot.val()){
+//       console.log("ok");  
+//     } else {
+
+//       var newName = snapshot.val()['RoundData'].names.push(username);
+
+//       update(ref(db,'Round/RoundData'),{
+//         names: newName
+//       });
+
+//       var id = (snapshot.val()['RoundData'].names.length);
+//       set(ref(db,'Round/' + username),{
+//         bets: [0],
+//         name: username,
+//         packed: false,
+//         playernum: id,
+//         showing: false,
+//         totalBet: 0
+//       })
+
+//     }
+//   });
+
+// }
+
 var pName = "";
 
 document.getElementById("displayName").style.display = "none";
@@ -19,13 +50,16 @@ document.getElementById("displayName").style.display = "none";
 document.getElementById("loginForm").addEventListener("submit",(event)=>{
   event.preventDefault()
   document.getElementById("displayName").innerText = document.getElementById("loginInput").value;
+  
+  pName = document.getElementById("loginInput").value;
+  // addUser(document.getElementById("loginInput").value);
+
   document.getElementById("loginDiv").style.display = "none";
   document.getElementById("displayName").style.display = "flex";
 });
 
 
 if (pName != ""){
-  const db = getDatabase();
   var playerID = 0;
   var chaalAmount = 0;
   var playerActive = false;
@@ -44,7 +78,7 @@ if (pName != ""){
     var nameList = data["RoundData"].names;
     
     while (true){
-      if ((data[nameList[(playerID == 0) ? playerID = (nameList.length-1) : --playerID]].packed) == false){
+      if ((data[nameList[(playerID == 1) ? playerID = (nameList.length) : --playerID]].packed) == false){
         previousPlayer = [playerID,nameList[playerID]];
         break;
       }
@@ -53,7 +87,7 @@ if (pName != ""){
     playerID = data[pName].playerNum;
     
     while (true){
-      if ((data[nameList[(playerID == (nameList.length-1)) ? playerID = 0 : ++playerID]].packed) == false){
+      if ((data[nameList[(playerID == (nameList.length)) ? playerID = 1 : ++playerID]].packed) == false){
         nextPlayer = [playerID,nameList[playerID]];
         break;
       }
@@ -152,7 +186,9 @@ if (pName != ""){
       activate(dbSnap);
       // console.log(playerActive);
       console.log("You are playing");
+
     } else if (dbSnap[pName].showing){
+      
       playerActive = false;
       packActive = true;
       console.log("You are showing");
