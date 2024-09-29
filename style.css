@@ -66,14 +66,44 @@ body
 
 #currentRound
 {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     
+     height: 7vh;
+     width: 100%;
+     margin: 0;
+     margin-top: 2vh;
+}
+
+#currentRoundCumBet
+{
      background-color: beige;
      height: 7vh;
-     width: 60%;
+     width: 30%;
      border-radius: 50px;
      border-right:  0.5vh solid rgb(100, 100, 90);
      border-bottom: 0.5vh solid rgb(100, 100, 90);
-     margin: auto;
-     margin-top: 3vh;
+     margin-right: 2vh;
+     margin-left: 10vh;
+     
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     
+}
+
+#currentRoundMyBet
+{
+     background-color: beige;
+     height: 7vh;
+     min-width: 7vh;
+     width: fit-content;
+     border-radius: 50px;
+     border-right:  0.5vh solid rgb(100, 100, 90);
+     border-bottom: 0.5vh solid rgb(100, 100, 90);
+     margin: 0;
+     padding: 0;
      
      display: flex;
      justify-content: center;
@@ -82,7 +112,6 @@ body
 
 #cumBet
 {
-     margin-left: 40%;
      color: #062222;
      font-size:   6vh;
      font-weight: 600;
@@ -90,9 +119,10 @@ body
 
 #myBet
 {
-     color: gray;
-     font-size: 4vh;
-     padding-left: 30%;
+     color: rgb(65, 62, 62);
+     font-size:   5vh;
+     font-weight: 600;
+     padding: 2vh;
 }
 
 #move
@@ -147,6 +177,7 @@ body
      margin: 2vh;
      border-bottom: 8px solid black;
      border-right: 8px solid black;
+     
 }
 
 #chaalBut2
@@ -175,6 +206,20 @@ body
      opacity: 50%;
 }
 
+#doubleBut
+{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 15vh;
+     width: 15vh;
+     background-color: #062222;
+     border-radius: 25%;;
+     margin: 2vh;
+     border-bottom: 8px solid black;
+     border-right: 8px solid black;
+}
+
 #doubleBut2
 {
      height: 8vh;
@@ -201,19 +246,6 @@ body
      padding: 0;
 }
 
-#doubleBut
-{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 15vh;
-     width: 15vh;
-     background-color: #062222;
-     border-radius: 25%;;
-     margin: 2vh;
-     border-bottom: 8px solid black;
-     border-right: 8px solid black;
-}
 
 .move2 div
 {
@@ -336,15 +368,15 @@ body
      height: 30vh;
      width: 100vw;
      position: absolute;
-     top: 67vh;
+     top: 64vh;
      background-color: rgba(0, 0, 0, 0.704);
-     backdrop-filter: blur(7px);
-     box-shadow: 0 0 60px black;
-
+     backdrop-filter: blur(19px);
+     box-shadow: 0 0 100px black;
+     
      display: flex;
      justify-content: center;
      align-items: center;
-
+     
      color: wheat;
      font-size: 12vw;
      font-weight: 600;
@@ -355,4 +387,69 @@ body
      padding: 5px;
      padding-left: 10px;
      padding-right: 10px;
+}
+
+#finalSequence
+{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+} 
+
+#youWin
+{
+     padding: 0;
+     margin: 0;
+     margin-top: 24vh;
+     height: 8vh;
+     width: 100vw;
+     text-align: center;
+     font-size: 8.0vh;
+     color: #e1d47d;
+     text-shadow: 0 0 20px #FFDF00;
+     font-family: 'Times New Roman', Times, serif;
+     display: none;
+     align-items: center;
+     justify-content: center;
+}
+
+#youLose
+{
+     padding: 0;
+     margin: 0;
+     margin-top: 24vh;
+     height: 8vh;
+     width: 100vw;
+     text-align: center;
+     font-size: 8.0vh;
+     color: #656161;
+     text-shadow: 0 0 20px #959591;
+     font-family: 'Times New Roman', Times, serif;
+     display: none;
+     align-items: center;
+     justify-content: center;
+}
+
+#finalPot
+{
+     background-color: beige;
+     height: 9vh;
+     width: 30%;
+     border-radius: 50px;
+     border-right:  0.5vh solid rgb(100, 100, 90);
+     border-bottom: 0.5vh solid rgb(100, 100, 90);
+     margin: auto;
+     margin-top: 5vh;
+
+     display: none;
+     align-items: center;
+     justify-content: center;
+}
+
+#finalPot p
+{
+color: #062222;
+font-size:   6vh;
+font-weight: 600;
 }

@@ -10,12 +10,9 @@
 
 <body>
 
-    <div id = "mask">
-        <p>Coming Soon!</p>
-    </div>
-
+    
     <div id = "header">
-
+        
         <div id = "loginDiv">
             <form id= "loginForm">
                 <input id = "loginInput" required type = "text" placeholder = "Enter username" maxlength = "16">
@@ -23,56 +20,60 @@
         </div>
         
         <div id="displayName"><p>Tujhe Matlab?</p></div>
-
+        
     </div>
     
     <div id="currentRound">
-        <p id = "cumBet">0</p>
-        <p id = "myBet"> 0</p>
+        <div id="currentRoundCumBet">
+            <p id = "cumBet"> 0 </p>
+        </div>
+        <div id = "currentRoundMyBet">
+            <p id = "myBet"> 0 </p>
+        </div>
     </div>
-    
+        
     
     <main>
-    <div id = "adminMove">   
-        <div id="startBut">
-            <p>Start</p>
-        </div>
-        
-        <div id="clearBut">
-            <p>Clear</p>
-        </div>
-    </div>
-    
-    <div id="move">
-        
-        <div class="move1">    
-            <div id="chaalBut">
-                <div id="chaalBut2">
-                    <pre>Chaal</pre>
-                    <p id = "currentChaal">0</p>
-                </div>
+        <div id = "adminMove">   
+            <div id="startBut">
+                <p>Start</p>
             </div>
             
-            <div id="doubleBut">
-                <div id="doubleBut2">
-                    <pre>Double</pre>
-                    <p id = "currentDouble">0</p>
-                </div>
-            </div>
-        </div>   
-        
-        <div class="move2">
-            <div id="showBut">
-                <p>Show</p>
-            </div>
-
-            <div id="packBut">
-                <p>Pack</p>
+            <div id="clearBut">
+                <p>Clear</p>
             </div>
         </div>
-    </div>
+        
+        <div id="move">
+            
+            <div class="move1">    
+                <div id="chaalBut">
+                    <div id="chaalBut2">
+                        <pre>Chaal</pre>
+                        <p id = "currentChaal">0</p>
+                    </div>
+                </div>
+                
+                <div id="doubleBut">
+                    <div id="doubleBut2">
+                        <pre>Double</pre>
+                        <p id = "currentDouble">0</p>
+                    </div>
+                </div>
+            </div>   
+            
+            <div class="move2">
+                <div id="showBut">
+                    <p>Show</p>
+                </div>
+                
+                <div id="packBut">
+                    <p>Pack</p>
+                </div>
+            </div>
+        </div>
     </main>
-
+    
     <div id="players1"> 
         <span id="players">
             <div id="face"></div>
@@ -95,7 +96,7 @@
             <div id="currentBet">0</div>
         </span>       
     </div>
-
+    
     <div id="players2"> 
         <span id="players">
             <div id="face"></div>
@@ -119,8 +120,28 @@
         </span>       
     </div>
 </div>
-    
-<script type="module" src="script.js"></script>
 
+    <div id = "mask">
+        <p>Coming Soon!</p>
+    </div>
+
+<div id="finalSequence">
+
+    <div id="youWin">
+        <p>You Win!</p>
+    </div>
+    
+    <div id="youLose">
+        <p>You Lose..</p>
+    </div>
+    
+    <div id="finalPot">
+        <p id = "finalPotText">0</p>
+    </div>
+    
+</div>
+    
+    <script type="module" src="script.js"></script>
+    
 </body>
 </html>
