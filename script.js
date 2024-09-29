@@ -18,22 +18,6 @@ console.log("Connected to Database!");
 
 var pName = "";
 
-document.getElementById("currentRound").style.display = "none";
-    document.getElementById("players1").style.display = "none";
-    document.getElementById("players2").style.display = "none";
-    document.getElementById("mask").style.display = "none";
-    document.getElementById("chaalBut").style.display = "none";
-    document.getElementById("showBut").style.display = "none";
-    document.getElementById("doubleBut").style.display = "none";
-    document.getElementById("packBut").style.display = "none";
-
-
-
-    document.getElementById("finalSequence").style.display = "flex";
-    document.getElementById("youWin").style.display = "flex";
-    document.getElementById("finalPotText").innerText = document.getElementById("myBet").innerText;
-    document.getElementById("finalPot").style.display = "flex";
-
 function addUser(username){
   get(ref(db,'Round/')).then((snapshot) => {
     // console.log(snapshot.val());
