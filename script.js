@@ -22,13 +22,13 @@ function addUser(username){
   get(ref(db,'Round/')).then((snapshot) => {
     // console.log(snapshot.val());
     // console.log(username);
+
     if (username == "Admin"){
 
       document.getElementById("adminMove").style.display = "flex";
       document.getElementById("currentRound").style.display = "none";
       document.getElementById("players1").style.display = "none";
       document.getElementById("players2").style.display = "none";
-      document.getElementById("mask").style.display = "none";
       document.getElementById("chaalBut").style.display = "none";
       document.getElementById("showBut").style.display = "none";
       document.getElementById("doubleBut").style.display = "none";
@@ -83,6 +83,7 @@ var playerActive = false;
 var nextPlayer = [];
 var previousPlayer = [];
 var betInfo = [];
+var playerList = [];
 var packActive = false;
 
 
@@ -150,12 +151,11 @@ function checkWin(data){
   }
   
   if(activePlayers.length == 1 && data['RoundData'].playingNum != 0){
-    if(activePlayers[0][1] == pName){
+    if(activePlayers[0][1] == pName && pName != "Admin"){
       
       document.getElementById("currentRound").style.display = "none";
       document.getElementById("players1").style.display = "none";
       document.getElementById("players2").style.display = "none";
-      document.getElementById("mask").style.display = "none";
       document.getElementById("chaalBut").style.display = "none";
       document.getElementById("showBut").style.display = "none";
       document.getElementById("doubleBut").style.display = "none";
@@ -165,12 +165,11 @@ function checkWin(data){
       document.getElementById("finalPotText").innerText = document.getElementById("myBet").innerText;
       document.getElementById("finalPot").style.display = "flex";
       
-    } else {
+    } else if (pName != "Admin"){
       
       document.getElementById("currentRound").style.display = "none";
       document.getElementById("players1").style.display = "none";
       document.getElementById("players2").style.display = "none";
-      document.getElementById("mask").style.display = "none";
       document.getElementById("chaalBut").style.display = "none";
       document.getElementById("showBut").style.display = "none";
       document.getElementById("doubleBut").style.display = "none";
@@ -192,6 +191,33 @@ function uiUpdate(){
   document.getElementById("myBet").innerText = betInfo.reduce((a, b) => a + b, 0);
   document.getElementById("currentChaal").innerText = chaalAmount;
   document.getElementById("currentDouble").innerText = chaalAmount*2;
+
+
+  get(ref(db,'Round/')).then((snapshot) => {
+    var data = snapshot.val();
+
+    var temp = data['RoundData'].names;
+
+    playerList = [];
+
+    for(var i = 1; i < temp.length; i++){
+      playerList.push([temp[i],data[temp[i]].totalBet]);
+    }
+
+    for(var i = 0; i < playerList.length; i++){
+      
+      document.getElementById(i+1).children[0].innerText = playerList[i][0][0];
+      document.getElementById(i+1).children[1].innerText = playerList[i][1];
+
+      if(data[playerList[i][0]].packed){
+        document.getElementById(i+1).children[0].style.opacity = "40%";
+        document.getElementById(i+1).children[1].style.opacity = "40%";
+      }
+    }
+
+
+
+  });
   
 }
 
@@ -215,6 +241,7 @@ function deactivate(){
 }
 
 function playChaal(){
+
   console.log("Chaal");
   betInfo.push(chaalAmount);
   cumuBet += chaalAmount;
@@ -363,7 +390,7 @@ onValue(ref(db,'Round/'),(snapshot) => {
     document.getElementById("chaalBut").style.opacity = "40%";
     document.getElementById("doubleBut").style.opacity = "40%";
     document.getElementById("showBut").style.opacity = "40%";
-  } else {
+  } else{
     document.getElementById("chaalBut").style.opacity = "100%";
     document.getElementById("doubleBut").style.opacity = "100%";
     document.getElementById("showBut").style.opacity = "100%";
