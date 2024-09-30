@@ -87,8 +87,6 @@ function addUser(username){
   });
 }
 
-document.getElementById("displayName").style.display = "none";
-
 document.getElementById("loginForm").addEventListener("submit",(event)=>{
   event.preventDefault()
   document.getElementById("displayName").innerText = document.getElementById("loginInput").value;
