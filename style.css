@@ -1,10 +1,29 @@
 body
 {
+     color: beige;
      background-color: #220606;
      user-select: none;
      font-family: 'Times New Roman', Times, serif;
      height: 100%;
      overflow: hidden;
+     overscroll-behavior-y: auto;
+}
+
+.pull-to-refresh 
+{
+    position: fixed;
+    top: -50px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.7s ease-in-out;
+}
+
+.pull-to-refresh.visible 
+{
+    top: 0;
 }
 
 #loginDiv
@@ -319,6 +338,7 @@ body
      align-items: center;
      flex-direction: row;
      margin-top: 5vh;
+     color: black;
 }
 
 #players2
@@ -327,10 +347,12 @@ body
      justify-content: center;
      align-items: center;
      flex-direction: row;
+     color: black;
 }
 
 .players
 {
+     color: black;
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -344,16 +366,17 @@ body
 
 #face
 {
+     color: black;
      height: 6vh;
      width: 6vh;
      border-radius: 50%;
      background-color: beige;
      border-right: 3px solid black;
-
+     
      background-color: beige;
      font-size: 3.8vh;
      font-weight: 600;
-
+     
      display: flex;
      justify-content: center;
      align-items: center;
@@ -361,6 +384,7 @@ body
 
 #currentBet
 {
+     color: black;
      height: 3vh;
      min-width: 5vh;
      width: fit-content;
