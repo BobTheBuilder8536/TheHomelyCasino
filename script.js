@@ -380,7 +380,10 @@ function chaalSound() {
 
 onValue(ref(db,'Round/'),(snapshot) => {
   var dbSnap = snapshot.val();
-  
+
+  if(dbSnap['RoundData'].names == ["Admin"]){
+    location.reload();
+  }
   
   cumuBet = dbSnap['RoundData'].cumBet;
   // console.log(cumuBet);
