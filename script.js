@@ -18,13 +18,15 @@ console.log("Connected to Database!");
 
 const pullToRefresh = document.querySelector('.pull-to-refresh');
 let touchstartY = 0;
+let touchDiff = 0;
+
 document.addEventListener('touchstart', e => {
   touchstartY = e.touches[0].clientY;
 });
 document.addEventListener('touchmove', e => {
   const touchY = e.touches[0].clientY;
-  const touchDiff = touchY - touchstartY;
-  if (touchDiff > 200 && window.scrollY === 0) {
+  touchDiff = touchY - touchstartY;
+  if (touchDiff > 200) {
     pullToRefresh.classList.add('visible');
     e.preventDefault();
   }
@@ -32,7 +34,10 @@ document.addEventListener('touchmove', e => {
 document.addEventListener('touchend', e => {
   if (pullToRefresh.classList.contains('visible')) {
     pullToRefresh.classList.remove('visible');
-    location.reload();
+    
+    if (touchDiff > 200) {
+      location.reload();
+    }
   }
 });
 
