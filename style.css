@@ -78,7 +78,7 @@ body
      border-color: #FFDF00;
      box-shadow: 0 0 5px #FFDF00;
      
-     display: flex;
+     display: none;
      justify-content: center;
      align-items: center;
 }
